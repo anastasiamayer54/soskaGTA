@@ -1,0 +1,207 @@
+:root {
+    --pink-neon: #ff007f;
+    --cyan-neon: #00f0ff;
+    --yellow-neon: #ffeb3b;
+    --bg-dark: #090412;
+    --card-bg: rgba(23, 12, 38, 0.85);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Эффект заката Vice City на фоне */
+.bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 50% 10%, rgba(255, 0, 127, 0.25), transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(0, 240, 255, 0.15), transparent 40%),
+        linear-gradient(180deg, #090412 0%, #150826 100%);
+    z-index: -1;
+}
+
+/* Шапка с неоновым логотипом */
+.header {
+    text-align: center;
+    padding: 50px 20px 30px;
+}
+
+.gta-logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: 12px;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.vi-logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 5rem;
+    font-weight: 900;
+    background: linear-gradient(45deg, var(--pink-neon), var(--cyan-neon));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(255, 0, 127, 0.6);
+    line-height: 1;
+    margin: 5px 0;
+}
+
+.tagline {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 4px;
+    color: var(--cyan-neon);
+    text-shadow: 0 0 8px var(--cyan-neon);
+}
+
+/* Фильтры */
+.filter-nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin: 30px 20px;
+}
+
+.filter-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid var(--pink-neon);
+    color: #fff;
+    padding: 10px 24px;
+    border-radius: 25px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 0, 127, 0.2);
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background: var(--pink-neon);
+    color: #fff;
+    box-shadow: 0 0 20px var(--pink-neon), 0 0 10px var(--cyan-neon);
+    transform: translateY(-2px);
+}
+
+/* Сетка карточек */
+.main-content {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+/* Дизайн карточки видео */
+.video-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.video-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--cyan-neon);
+    box-shadow: 0 15px 35px rgba(0, 240, 255, 0.3), 0 0 15px rgba(255, 0, 127, 0.3);
+}
+
+.card-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(9, 4, 18, 0.85);
+    border: 1px solid var(--cyan-neon);
+    color: var(--cyan-neon);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-family: 'Orbitron', sans-serif;
+    z-index: 2;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* Соотношение 16:9 */
+    background: #000;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.card-info {
+    padding: 20px;
+}
+
+.video-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #fff;
+    line-height: 1.4;
+}
+
+.video-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #a090bd;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 12px;
+}
+
+/* Подвал */
+.footer {
+    text-align: center;
+    padding: 25px;
+    background: rgba(5, 2, 10, 0.9);
+    border-top: 1px solid rgba(255, 0, 127, 0.2);
+    color: #70608a;
+    font-size: 0.85rem;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Адаптивность для телефонов */
+@media (max-width: 768px) {
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+    .vi-logo {
+        font-size: 3.8rem;
+    }
+}
